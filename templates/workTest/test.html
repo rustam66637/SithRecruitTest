@@ -1,0 +1,20 @@
+{%  extends 'workTest/basehtml.html' %}
+
+{% block title %}
+    Test shadow hand
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <table>
+            {% for form in formset %}
+            {{ form }}
+            {% endfor %}
+        </table>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+{% endblock %}

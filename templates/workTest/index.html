@@ -1,0 +1,11 @@
+{%  extends 'workTest/basehtml.html' %}
+
+{% block title %}
+    WorkTest
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 align="center"><a href="{% url 'RecruitView_url' %}">Для рекрутов</a> | <a href="{% url 'SithView_url' %}">Для Ситхов</a></h1>
+    </div>
+{% endblock %}

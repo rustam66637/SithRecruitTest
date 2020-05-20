@@ -1,0 +1,37 @@
+{%  extends 'workTest/basehtml.html' %}
+
+{% block title %}
+    ResultTest
+{% endblock %}
+
+{% block content %}
+    <h1>{{ recruit }}</h1>
+
+    {% for answer in answers %}
+        <div class="form-group">
+            {{ answer.question }} <br> {{ answer.answer }}
+        </div>
+    {% endfor %}
+
+    <form action="{% url 'ResultTest_url' %}" method="post" class="form-group col-md-6">
+            {% csrf_token %}
+
+            <input type="hidden" name="result" value="1" id="id_result">
+            <input type="hidden" name="sith" value="{{ sith.pk }}" id="id_sith">
+            <input type="hidden" name="recruit" value="{{ recruit.pk }}" id="id_recruit">
+
+            <button type="submit" class="btn btn-primary">Принять</button>
+    </form>
+
+    <form action="{% url 'ResultTest_url' %}" method="post" class="form-group col-md-6">
+            {% csrf_token %}
+
+            <input type="hidden" name="result" value="0" id="id_result">
+            <input type="hidden" name="sith" value="{{ sith.pk }}" id="id_sith">
+            <input type="hidden" name="recruit" value="{{ recruit.pk }}" id="id_recruit">
+
+            <button type="submit" class="btn btn-primary">Отклонить</button>
+    </form>
+
+
+{% endblock %}

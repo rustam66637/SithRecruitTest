@@ -1,0 +1,31 @@
+{%  extends 'workTest/basehtml.html' %}
+
+{% block title %}
+    Recruit Create - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form action="{% url 'RecruitView_url' %}" method="post" class="form-group col-md-6">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+
+                    {% if field.errors %}
+                        <div class="alert alert-danger">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                    <label for="{{ form.title.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Далее</button>
+        </form>
+    </div>
+
+{% endblock %}
